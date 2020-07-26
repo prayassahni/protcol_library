@@ -1,0 +1,21 @@
+{
+
+    "hosts": {
+        "z1": {"ip": "10.0.1.1/24", "mac": "08:00:00:00:01:11",
+               "commands":["route add default gw 10.0.1.10 dev eth0",
+                           "arp -i eth0 -s 10.0.1.10 08:00:00:00:01:00"]},
+        "z2": {"ip": "10.0.2.2/24", "mac": "08:00:00:00:02:22",
+               "commands":["route add default gw 10.0.2.20 dev eth0",
+                           "arp -i eth0 -s 10.0.2.20 08:00:00:00:02:00"]}
+    },
+    "switches": {
+       "s4": { "runtime_json" : "s4-runtime.json" },
+       "s5": { "runtime_json" : "s5-runtime.json" },
+       "s6": { "runtime_json" : "s6-runtime.json" },
+       "s7": { "runtime_json" : "s7-runtime.json" }
+    },
+    "links": [
+        ["h1-eth1", "s4-eth1"],["s5-eth2", "s6-eth1"],["s4-eth2", "s5-eth1"],
+        ["s6-eth2", "s7-eth2"], ["h2-eth1", "s7-eth1"]
+    ]
+}
