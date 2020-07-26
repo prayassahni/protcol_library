@@ -25,8 +25,7 @@ header new_header
    bit<16> country_id;
    bit<16> state_id;
    bit<16> city_id;
-   bit<16> as_num;
-   bit<16> default;
+   bit<48> as_num;
 }
 
 header ipv4_t {
@@ -89,13 +88,6 @@ parser MyParser(packet_in packet,
 
 }
 
-/*************************************************************************
-************   C H E C K S U M    V E R I F I C A T I O N   *************
-*************************************************************************/
-
-control MyVerifyChecksum(inout headers hdr, inout metadata meta) {   
-    apply {  }
-}
 
 control MyIngress(inout headers hdr,
                   inout metadata meta,
